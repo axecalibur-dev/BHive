@@ -1,4 +1,4 @@
-# Rapid API Mutual Fund Brokerage
+# Mutual Fund Brokerage using Rapid API
 
 ## Project Prerequisites
 
