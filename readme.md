@@ -26,11 +26,6 @@
 - `RAPID_API_URL` - Base URL for RapidAPI (e.g., `latest-mutual-fund-nav.p.rapidapi.com`).
 - `RAPID_API_KEY` - Your API key for accessing RapidAPI.
 
-### Testing/Dummy Credentials
-- `DUMMY_EMAIL` - Dummy email address for testing (e.g., `dummy@mail.com`).
-- `DUMMY_PWD` - Dummy password for testing (e.g., `IwANtMuTu@LFuNDs123`).
-
-
 ## How to Set Up
 
 1. **Clone the Repository**
@@ -97,5 +92,6 @@
     ```bash
     project root > sh tests.sh
     ```
+- Use the public/signup endpoint to create credentials for usage within. The singup expects email and password of your choosing which returns back access token, this token can be used to access secure apis by passing the token in Authorization header for eg : Authorization : insert token here. // No Bearer prefix needed.
 
 - Use the provided **Postman Collection** to test the APIs. The collection includes all necessary endpoints and example requests for the application.
