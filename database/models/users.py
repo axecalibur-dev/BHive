@@ -23,5 +23,4 @@ class User(Base):
 
 
 
-# Ensure the `email` field is unique by creating a unique constraint on the table
 User.__table__.append_constraint(UniqueConstraint('email'))

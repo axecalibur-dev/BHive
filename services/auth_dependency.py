@@ -13,13 +13,10 @@ def check_authorization(authorization: str = Header(None)) -> Dict[str, str]:
 
     try:
         token = authorization
-        # Get the secret signing key from the environment
         secret_key = os.getenv('SECRET_SIGNING_KEY')
 
-        # Decode the token using HS256 algorithm
         payload = jwt.decode(token, secret_key, algorithms=["HS256"])
 
-        # Extract relevant information from the payload
         email = payload.get("email")
         user_id = payload.get("user_id")
 

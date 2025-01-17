@@ -31,7 +31,6 @@ class AuthServices:
         access_token_expiration = datetime.utcnow() + timedelta(days=7)  # Access token expires in 7 days
         refresh_token_expiration = datetime.utcnow() + timedelta(days=30)  # Refresh token expires in 30 days
 
-        # Create access token
         access_payload = {
             "exp": access_token_expiration,
             "iat": datetime.utcnow(),
@@ -41,7 +40,6 @@ class AuthServices:
         }
         access_token = jwt.encode(access_payload, os.getenv("SECRET_SIGNING_KEY"), algorithm=os.getenv("SECRET_SIGNING_KEY_ALGO"))
 
-        # Create refresh token
         refresh_payload = {
             "exp": refresh_token_expiration,
             "iat": datetime.utcnow(),
@@ -52,4 +50,3 @@ class AuthServices:
 
         return access_token,refresh_token
 
-    # middleware for auth

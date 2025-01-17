@@ -93,4 +93,9 @@
 
 ## Testing the APIs
 
+ - You can run a local test on the application using a shell script at : 
+    ```bash
+    project root > sh tests.sh
+    ```
+
 - Use the provided **Postman Collection** to test the APIs. The collection includes all necessary endpoints and example requests for the application.

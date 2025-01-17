@@ -6,13 +6,22 @@ from database.models import User
 import bcrypt  # Importing bcrypt for password hashing
 
 from services.auth_service import AuthServices
+from dotenv import load_dotenv
 
+# Load environment variables before the test
+load_dotenv()
 
 class PublicService:
 
     @classmethod
     async def signup_user(cls, signup_data, db: AsyncSession):
+        print("RES", flush=True)
+        print(db.is_active, flush=True)
+        print("RES", flush=True)
+        # try:
         result = await db.execute(select(User).filter_by(email=signup_data.email))
+        # except Exception as e:
+            # print(e)
         user_exists = result.scalar()
         if user_exists:
             raise ValueError("Email already registered")

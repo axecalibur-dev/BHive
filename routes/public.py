@@ -13,10 +13,13 @@ router = APIRouter()
 
 @router.post("/public/signup")
 async def perform_signup(signup_data: SignUpRequestDto, db: AsyncSession = Depends(get_db)):
+    print("API:", flush=True)
+    print(db, flush=True)
+    print("API:", flush=True)
     try:
         new_user, access_token, refresh_token = await PublicService.signup_user(signup_data, db)
         return HttpResponse(
-            status_code=201,
+            status_code=200,
             status="Success",
             message="User created successfully",
             data=SignUpResponseDto(
@@ -27,6 +30,9 @@ async def perform_signup(signup_data: SignUpRequestDto, db: AsyncSession = Depen
             ))
 
     except Exception as e:
+        print("EX:", flush=True)
+        print(str(e), flush=True)
+        print("Ex:", flush=True)
         return HttpResponse(
             status_code=400,
             status="Failure",
@@ -43,7 +49,7 @@ async def perform_login(login_data: LoginRequestDto, db: AsyncSession = Depends(
             status="Success",
             message="User logged in.",
             data=SignUpResponseDto(
-                id=str(new_user.id),  # Convert UUID to string
+                id=str(new_user.id),
                 email=new_user.email,
                 access_token=access_token,
                 refresh_token=refresh_token

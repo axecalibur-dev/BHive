@@ -17,13 +17,12 @@ from services.public_services import PublicService
 
 router = APIRouter()
 
+
 @router.get("/secure/fund-family-houses")
-async def get_fund_family_houses(db: AsyncSession = Depends(get_db), authorization: dict = Depends(check_authorization)):
+async def get_fund_family_houses(db: AsyncSession = Depends(get_db),
+                                 authorization: dict = Depends(check_authorization)):
     try:
         get_fund_family_data = await MutualFundServices.get_all_schemes_service()
-        print("STDOUT:", flush=True)
-        print(get_fund_family_data, flush=True)
-        print("STDOUT:", flush=True)
         return HttpResponse(
             status_code=200,
             status="Success",
@@ -41,12 +40,13 @@ async def get_fund_family_houses(db: AsyncSession = Depends(get_db), authorizati
 
 @router.get("/secure/schemas-fund-family")
 async def get_schemas_fund_family(
-    db: AsyncSession = Depends(get_db),
-    authorization: dict = Depends(check_authorization),
-    fund_family_name: str = Query(..., alias="fund_family_name", description="Name of the fund family")
+        db: AsyncSession = Depends(get_db),
+        authorization: dict = Depends(check_authorization),
+        fund_family_name: str = Query(..., alias="fund_family_name", description="Name of the fund family")
 ):
     try:
-        get_schemas_fund_family_data = await MutualFundServices.get_schemas_fund_family(fund_family_name=fund_family_name)
+        get_schemas_fund_family_data = await MutualFundServices.get_schemas_fund_family(
+            fund_family_name=fund_family_name)
         return HttpResponse(
             status_code=200,
             status="Success",
@@ -64,12 +64,11 @@ async def get_schemas_fund_family(
 
 @router.post("/secure/buy-funds")
 async def acquire_mutual_funds_units(
-    purchase_data: BuyMutualFundsRequestDto,
-    db: AsyncSession = Depends(get_db),
-    authorization: dict = Depends(check_authorization),
+        purchase_data: BuyMutualFundsRequestDto,
+        db: AsyncSession = Depends(get_db),
+        authorization: dict = Depends(check_authorization),
 ):
     try:
-        # Call the business logic method
         no_of_units, ISIN, amc_code, scheme_name = await MutualFundServices.buy_mutual_funds_units(
             purchase_data=purchase_data,
             db=db,
@@ -87,10 +86,8 @@ async def acquire_mutual_funds_units(
             }
         )
     except HTTPException as http_exc:
-        # Propagate HTTP exceptions as-is
         raise http_exc
     except Exception as e:
-        # Handle other generic exceptions
         raise HTTPException(
             status_code=500,
             detail=f"An unexpected error occurred: {str(e)}"
