@@ -14,7 +14,7 @@ class AuthServices:
     @classmethod
     def decode_access_token(cls,token: str):
         try:
-            payload = jwt.decode(token, os.getenv("SECRET_SIGNING_KEY"), algorithms=os.getenv("SECRET_SIGNING_KEY"))
+            payload = jwt.decode(token, os.getenv("SECRET_SIGNING_KEY"), algorithms=os.getenv("SECRET_SIGNING_KEY_ALGO"))
 
             return payload
         except jwt.PyJWTError:
@@ -39,7 +39,7 @@ class AuthServices:
             "user_id": str(signup_data.id),
             "email": signup_data.email
         }
-        access_token = jwt.encode(access_payload, os.getenv("SECRET_SIGNING_KEY"), algorithm="HS256")
+        access_token = jwt.encode(access_payload, os.getenv("SECRET_SIGNING_KEY"), algorithm=os.getenv("SECRET_SIGNING_KEY_ALGO"))
 
         # Create refresh token
         refresh_payload = {
@@ -48,7 +48,7 @@ class AuthServices:
             "type": "refresh",
             "user_id": str(signup_data.id),
         }
-        refresh_token = jwt.encode(refresh_payload, os.getenv("SECRET_SIGNING_KEY"), algorithm="HS256")
+        refresh_token = jwt.encode(refresh_payload, os.getenv("SECRET_SIGNING_KEY"), algorithm=os.getenv("SECRET_SIGNING_KEY_ALGO"))
 
         return access_token,refresh_token
 
