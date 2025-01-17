@@ -37,6 +37,7 @@
 
 2. **Set Up Environment Variables**
    - Move the `.env` file to the project root directory. This ensures all required environment variables are passed to the project.
+   - Note : All credentials to spin up postgres are present env minus the credentials ( token ) for RAPID API. Please set up the rapid api token in env file before attemption to start up.
 
 3. **Ensure Docker is Running**
    - Keep Docker open and running in the background.
@@ -57,7 +58,7 @@
      sh start_project.sh
      ```
    - This script will:
-     - Install all necessary dependencies listed in `requirements.txt` locally.
+     - Install all necessary dependencies listed in `requirements.txt` locally and in docker container.
      - Build Docker containers using `docker-compose`.
      - Install dependencies inside Docker via the `Dockerfile`.
      - Start the application using Uvicorn on port `8000` and inject environment variables from `.env`.
