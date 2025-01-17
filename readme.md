@@ -8,6 +8,29 @@
 
 ---
 
+## Environment Variables
+
+### Database Configuration
+- `POSTGRES_USER` - Your PostgreSQL username (e.g., `postgres_user`).
+- `POSTGRES_PASSWORD` - Your PostgreSQL password.
+- `POSTGRES_HOST` - Hostname for the PostgreSQL container (default: `postgres-container`).
+- `POSTGRES_DB` - Name of your PostgreSQL database.
+- `POSTGRES_HOST_AUTH_METHOD` - Authentication method for PostgreSQL (default: `password`).
+- `POSTGRES_PORT` - Port number for PostgreSQL (default: `5432`).
+
+### Security Configuration
+- `SECRET_SIGNING_KEY` - Key used for signing tokens (e.g., `sdfjopaeup123sdad`).
+- `SECRET_SIGNING_KEY_ALGO` - Algorithm used for signing (e.g., `HS256`).
+
+### External API Configuration
+- `RAPID_API_URL` - Base URL for RapidAPI (e.g., `latest-mutual-fund-nav.p.rapidapi.com`).
+- `RAPID_API_KEY` - Your API key for accessing RapidAPI.
+
+### Testing/Dummy Credentials
+- `DUMMY_EMAIL` - Dummy email address for testing (e.g., `dummy@mail.com`).
+- `DUMMY_PWD` - Dummy password for testing (e.g., `IwANtMuTu@LFuNDs123`).
+
+
 ## How to Set Up
 
 1. **Clone the Repository**
