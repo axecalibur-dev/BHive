@@ -37,7 +37,7 @@
 
 2. **Set Up Environment Variables**
    - Move the `.env` file to the project root directory. This ensures all required environment variables are passed to the project.
-   - Note : All credentials to spin up postgres are present env minus the credentials ( token ) for RAPID API. Please set up the rapid api token in env file before attemption to start up.
+   - Note : All credentials to spin up required services are present in the env, minus the credentials ( token ) for RAPID API. Please set up the rapid api token in env file before attemption to start up.
 
 3. **Ensure Docker is Running**
    - Keep Docker open and running in the background.
