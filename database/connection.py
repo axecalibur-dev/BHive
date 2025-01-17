@@ -33,7 +33,6 @@ async def init_db():
     try:
         async with SessionLocal() as session:
             result = await session.execute(select(1))
-            print(result.scalar(), flush=True)  # Use `scalar()` to get the result of a simple query
 
         logging.info("Database connected successfully")
         print("Database connected", flush=True)
