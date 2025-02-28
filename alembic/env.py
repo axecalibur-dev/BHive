@@ -43,7 +43,7 @@ def run_migrations_offline() -> None:
 
 def run_migrations_online() -> None:
     """Run migrations in 'online' mode."""
-    engine = create_engine("postgresql://endsem_root_user_dev:endsem_root_pwd@localhost:5432/endsem_development")
+    engine = create_engine("")
 
     with engine.connect() as connection:
         context.configure(
